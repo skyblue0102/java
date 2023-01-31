@@ -47,7 +47,7 @@ public class mission0131 {
 		System.out.printf("렌트요금 : %d\n", a.fare);
 		System.out.printf("렌트회사명 : %s\n", a.comp);
 
-		System.out.print("\n속도를 얼마나 올리시겠습니까 : ");
+		System.out.print("\n속도를 얼마나 올리시겠습니까? : ");
 		int plus = sc.nextInt();
 		System.out.printf("현재 자동차의 속도는 시속 %dkm/h입니다.", a.velocity + plus);
 		System.out.print("\n속도를 얼마나 내리시겠습니까? : ");
