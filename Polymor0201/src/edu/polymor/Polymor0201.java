@@ -1,6 +1,23 @@
-package edu.inheritance;
+package edu.polymor;
 
-class Person {
+abstract class mammal {
+
+	abstract public void moving();
+
+	public mammal() {
+		System.out.println("난 mammal 기본 생성자");
+	}
+
+	public void talk() {
+
+	}
+
+	public void show() {
+		System.out.println("난 mammal의 show()");
+	}
+}
+
+class Person extends mammal {
 	protected final int IQ = 140;
 	protected String name = null;
 	protected int age = 0;
@@ -20,6 +37,8 @@ class Person {
 	}
 
 	public Person(String name, int age) {
+
+		super();// mammal
 		System.out.println("난 매개변수 두개인 Person 생성자");
 		this.name = name;
 		this.age = age;
@@ -42,6 +61,7 @@ class Person {
 	}
 
 	public void talk() {
+//		name = "아무개";
 		System.out.println("talk() 메서드이다.");
 	}
 
@@ -60,6 +80,17 @@ class Person {
 	public void breathe() {
 		age = 1;
 	}
+
+	public void show() {
+		super.show();
+		System.out.printf("this.name=%s, age=%d\n", name, age);
+		System.out.println("난 Person의 show()메서드");
+	}
+
+	public void moving() {
+		System.out.println("Person이 움직인다");
+	}
+
 }// end of class Person
 
 class Man extends Person {
@@ -94,34 +125,34 @@ class Man extends Person {
 	}
 
 	public void show() {
+		super.show();
 		System.out.printf("Person의 IQ=%d\n", super.IQ);
 		System.out.printf("Man의 IQ=%d\n", this.IQ);
-		System.out.printf("this.name=%s, age=%d\n", name, age);
+//		System.out.printf("this.name=%s, age=%d\n", name, age);
 		System.out.printf("money=%d,job=%s\n", money, job);
 	}
 
 	public void work() {
 		System.out.println("Man이 일한다.");
 	}
+
+	public void moving() {
+		System.out.println("Man이 움직인다");
+	}
+
 }// end of Man
 
-public class Inheritance0131 {
+public class Polymor0201 {
 
 	public static void main(String[] args) {
 
-		Person chulsu = new Person();
-		chulsu.name = "철수";
-		System.out.printf("chulsu.name=%s\n", chulsu.name);
+//		Man jaesuk =
+//		Person jaesuk =
+		mammal jaesuk = new Man("유재석", 51, 70000, "국민MC");
+		jaesuk.talk();// person의 talk()
+		jaesuk.show();// Man의 show()
+		jaesuk.moving();
 
-		Man wonbin = new Man();
-		wonbin.setname("원빈");
-		wonbin.work();
-		System.out.printf("wonbin.name=%s\n", wonbin.getname());
-
-		wonbin.setJob("연예인");
-		System.out.printf("wonbin.job=%s\n", wonbin.getJob());
-
-		Man jaesuk = new Man("유재석", 51, 70000, "국민MC");
-		jaesuk.show();
 	}
+
 }
